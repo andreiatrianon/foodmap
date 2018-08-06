@@ -1,1 +1,61 @@
-/*Add your CSS*/
+body {
+  font-family: 'Raleway', sans-serif;
+}
+
+#animation {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  animation: mymove 6s infinite;
+}
+
+@keyframes mymove {
+  from {left: 0px;}
+  to {left: 700px;}
+}
+
+#animation h1 {
+  position: absolute;
+  top: 45vh;
+}
+
+.box, hr {
+  border: 2px solid white;
+}
+
+main, #map {
+  display: none;
+}
+
+hr {
+  width: 62vw;
+}
+
+.box {
+  width: 4vw;
+  height: 4vh;
+}
+
+#map {
+  width: 400px;
+  height: 300px;
+}
+
+li:hover, img:hover {
+  cursor: pointer;
+}
+
+.my-dropdown-menu {
+  position: absolute;
+  z-index: 1000;
+  top: 100%;
+  display: none;
+  font-size: 1rem;
+  color: #212529;
+  text-align: left;
+  list-style: none;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid rgba(0,0,0,.15);
+  border-radius: .25rem;
+}
