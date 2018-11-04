@@ -3,7 +3,7 @@
 The goal of this project is to create an web-app that filters the restaurants from the database, opening an informational modal and showing the restaurants in the map.
 The project uses the [MAPs API from Here](https://developer.here.com/documentation#maps).
 
-![Demo]()
+![Demo](./foodmap.gif)
 
 ## Built With
 
