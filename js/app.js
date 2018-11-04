@@ -1,8 +1,13 @@
 $(document).ready(function() {
   
   $('#animation').delay('2500').fadeToggle('slow');
-  $('main, #map').delay('2500').fadeIn('slow');
 
+  $.when($('main').delay('2500').fadeIn('slow'))
+  .done(() => {
+    $('#div-before-map').after(`<div class="row mb-4" id="map"></div>`)
+    getRestaurantsSelected()
+  });
+  
   $('input').val('');
 
   getDropdownItems();
@@ -69,6 +74,7 @@ function getRestaurantsSelected() {
       restaurantsSelected.push(restaurant);
     }
   }
+  $('#map').html('');
   myMap(restaurantsSelected);
   getRestaurantsImages(restaurantsSelected);
 }
@@ -122,28 +128,5 @@ function getRestaurantModal(srcImageSelected) {
 function myMap(restaurantsSelected) {
   var locations = [];
   getRestaurantsLocations(restaurantsSelected, locations);
-
-  var map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 15,
-    center: new google.maps.LatLng(-23.556866, -46.660902),
-    mapTypeId: google.maps.MapTypeId.ROADMAP
-  });
-
-  var infowindow = new google.maps.InfoWindow();
-
-  var marker, i;
-
-  for (i = 0; i < locations.length; i++) {  
-    marker = new google.maps.Marker({
-      position: new google.maps.LatLng(locations[i][0], locations[i][1]),
-      map: map
-    });
-
-    google.maps.event.addListener(marker, 'click', (function(marker, i) {
-      return function() {
-        infowindow.setContent(locations[i][2]);
-        infowindow.open(map, marker);
-      }
-    })(marker, i));
-  }
+  initializeMap(locations);
 }

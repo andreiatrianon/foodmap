@@ -23,7 +23,7 @@ body {
   border: 2px solid white;
 }
 
-main, #map {
+main:not(#map)  {
   display: none;
 }
 
@@ -37,8 +37,8 @@ hr {
 }
 
 #map {
-  width: 400px;
-  height: 300px;
+  width: 640px;
+  height: 480px
 }
 
 li:hover, img:hover {
